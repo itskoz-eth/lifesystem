@@ -1,0 +1,145 @@
+Metadata-Version: 2.4
+Name: life_system
+Version: 0.1.0
+Summary: A comprehensive life management system
+Home-page: https://github.com/yourusername/life_system
+Author: Your Name
+Author-email: your.email@example.com
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: SQLAlchemy==2.0.27
+Requires-Dist: PyQt5==5.15.10
+Requires-Dist: pandas==2.2.0
+Requires-Dist: python-dateutil==2.8.2
+Requires-Dist: pytz==2024.1
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# Life System
+
+A comprehensive life management system built with Python and PyQt5.
+
+## Features
+
+- Goal Management
+  - Create, edit, and track goals
+  - Set priorities and timeframes
+  - Link goals to values and categories
+  - Track progress and status
+
+- Value Tracking
+  - Define personal values
+  - Record reflections on values
+  - Link values to goals
+
+- Category Organization
+  - Create hierarchical categories
+  - Organize goals by category
+  - Manage subcategories
+
+- Reflection System
+  - Record value-based reflections
+  - Track personal growth
+  - Review progress over time
+
+## Project Structure
+
+```
+LifeSystem/
+â”œâ”€â”€ data/               # Database and data files
+â”œâ”€â”€ src/               # Source code
+â”‚   â”œâ”€â”€ models/        # Database models
+â”‚   â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”‚   â”œâ”€â”€ value.py
+â”‚   â”‚   â”œâ”€â”€ category.py
+â”‚   â”‚   â”œâ”€â”€ goal.py
+â”‚   â”‚   â”œâ”€â”€ action.py
+â”‚   â”‚   â”œâ”€â”€ reflection.py
+â”‚   â”‚   â””â”€â”€ associations.py
+â”‚   â”œâ”€â”€ views/         # UI components
+â”‚   â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”‚   â””â”€â”€ goals.py
+â”‚   â””â”€â”€ main.py        # Application entry point
+â”œâ”€â”€ requirements.txt    # Python dependencies
+â””â”€â”€ README.md          # This file
+```
+
+## Setup
+
+1. Create a virtual environment:
+   ```bash
+   python -m venv venv311
+   ```
+
+2. Activate the virtual environment:
+   - Windows:
+     ```bash
+     .\venv311\Scripts\activate
+     ```
+   - Unix/MacOS:
+     ```bash
+     source venv311/bin/activate
+     ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Run the application:
+   ```bash
+   python src/main.py
+   ```
+
+## Development
+
+The project is organized into several key components:
+
+- **Models**: SQLAlchemy models for database tables
+- **Views**: PyQt5-based UI components
+- **Main**: Application entry point and window management
+
+### Database Schema
+
+The application uses SQLite with the following main tables:
+- Values
+- Categories
+- Goals
+- Actions
+- Value Reflections
+
+### UI Components
+
+The UI is built with PyQt5 and includes:
+- Main window with sidebar navigation
+- Goal management interface
+- Value tracking system
+- Category organization
+- Reflection recording
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details. 

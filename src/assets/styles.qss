@@ -1,0 +1,272 @@
+/* Global Stylesheet for Life System - Retro-Modern Fusion */ 
+
+/* --- Global Defaults & Root Variables (Conceptual) --- */
+/* PyQt QSS doesn't have CSS-like variables directly,
+   but we define common properties on general selectors like QWidget or * */
+
+QWidget {
+    font-family: "Segoe UI", Cantarell, "Helvetica Neue", Arial, sans-serif;
+    font-size: 13px; /* Base font size, e.g., 10pt or 13px */
+    color: #333333; /* Default dark gray text */
+}
+
+QMainWindow {
+    background-color: #ECE9D8; /* Retro light grey - main window background */
+}
+
+/* General content areas might have a slightly different light background */
+QWidget[cssClass="contentArea"] {
+    background-color: #F5F5F5; 
+}
+
+/* --- Common Colors (for reference, apply directly or with specific selectors) --- */
+/* 
+    Brushed Metal Accent Gradient (example):
+    qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #E6E6E6, stop:0.5 #DCDCDC, stop:1 #D0D0D0)
+
+    Selection/Highlight Blue:
+    #3875D7 or #5C85D6
+
+    Border Color:
+    #999999 or #A0A0A0
+*/
+
+/* --- Typography Base --- */
+QLabel {
+    background-color: transparent; /* Ensure labels don't obscure backgrounds */
+}
+
+/* More specific typography will be handled by component styles or dynamic properties */ 
+
+/* --- Basic Control Styling --- */
+QPushButton {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+                                    stop:0 #F0F0F0, stop:0.1 #E8E8E8, 
+                                    stop:0.5 #D8D8D8, stop:0.9 #E8E8E8, 
+                                    stop:1 #F0F0F0);
+    border: 1px solid #A0A0A0;
+    border-radius: 4px; /* Subtle rounding */
+    padding: 5px 10px;
+    min-height: 20px;
+    color: #333333;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+                                    stop:0 #F8F8F8, stop:0.1 #F0F0F0, 
+                                    stop:0.5 #E0E0E0, stop:0.9 #F0F0F0, 
+                                    stop:1 #F8F8F8);
+    border-color: #767676;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+                                    stop:0 #D0D0D0, stop:0.1 #C8C8C8, 
+                                    stop:0.5 #B8B8B8, stop:0.9 #C8C8C8, 
+                                    stop:1 #D0D0D0);
+    color: #111111;
+    border-color: #505050;
+}
+
+QPushButton:disabled {
+    background-color: #E0E0E0;
+    color: #999999;
+    border-color: #B0B0B0;
+}
+
+QLineEdit, QTextEdit, QComboBox, QSpinBox, QDoubleSpinBox, QDateEdit {
+    border: 1px solid #A0A0A0;
+    border-radius: 3px;
+    padding: 3px 5px;
+    background-color: white; /* Standard white background for input fields */
+    selection-background-color: #5C85D6; /* Light blue selection */
+    selection-color: white;
+}
+
+QLineEdit:focus, QTextEdit:focus, QComboBox:focus, QSpinBox:focus, QDoubleSpinBox:focus, QDateEdit:focus {
+    border: 1px solid #5C85D6; /* Blue border when focused */
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 18px;
+    border-left-width: 1px;
+    border-left-color: #A0A0A0;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow {
+    image: url(none); /* Remove default arrow; consider custom later or leave as OS default */
+    /* For custom arrow: image: url(:/path/to/your/arrow.png); */
+}
+
+QListWidget, QTableWidget {
+    border: 1px solid #B0B0B0; /* Slightly softer border than some controls */
+    background-color: white;
+    selection-background-color: #5C85D6; /* Defined blue accent */
+    selection-color: white;
+    alternate-background-color: #F0F5FA; /* Very light blue/gray for alternating rows */
+}
+
+/* Base styling for items (can be overridden by alternating colors, etc.) */
+QListWidget::item, QTableWidget::item {
+    padding: 5px; /* Consistent padding for items */
+    border-bottom: 1px solid #E8E8E8; /* Subtle separator for list items */
+}
+
+/* Remove default QListWidget item border if bottom border is used, to avoid doubling */
+QListWidget::item {
+    border: none; /* Override if you prefer only the bottom border from above */
+    border-bottom: 1px solid #E8E8E8;
+}
+
+QListWidget::item:selected, QTableWidget::item:selected {
+    background-color: #D0E4FE; /* Very light blue - similar to OS selection */
+    color: #000000; /* Black text for high contrast */
+}
+
+QListWidget::item:hover, QTableWidget::item:hover {
+    background-color: #E6F0FA; /* Slightly darker light blue for hover */
+    color: #000000; /* Black text */
+}
+
+/* Ensure QCalendarWidget selection also uses black text if not already */
+QCalendarWidget QAbstractItemView:enabled {
+    color: #000000; /* Black text for dates */
+    selection-background-color: #D0E4FE; /* Consistent light blue selection */
+    selection-color: #000000; /* Black text on selection */
+}
+
+QHeaderView::section {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+                                    stop:0 #F0F1F3, stop:1 #D8DADC); /* Light metallic gradient */
+    border: 1px solid #B0B0B0;
+    border-left: none;
+    border-top: none; /* Cleaner look */
+    padding: 4px 6px;
+    font-weight: normal; /* Less stark than bold for a modern touch */
+    color: #4A4A4A;
+}
+
+QHeaderView::section:first {
+    border-left: 1px solid #B0B0B0; /* Add left border only for the very first header */
+}
+
+/* --- Sidebar Styling --- */
+QWidget#leftSidebar {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+                                    stop:0 #787A7E, stop:1 #5F6165); /* Darker brushed metal */
+    /* A solid color example: background-color: #4A5568; */
+    /* border-right: 1px solid #404246; */ /* Optional darker border */
+}
+
+QWidget#leftSidebar QLabel#appTitle { /* Assuming app_title QLabel has objectName="appTitle" */
+    font-size: 20px; /* Slightly reduced from original for balance */
+    font-weight: bold;
+    color: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    text-align: center; /* QSS text-align might not work on QLabel, use label.setAlignment(Qt.AlignCenter) */
+}
+
+QWidget#leftSidebar QPushButton {
+    text-align: left;
+    padding: 12px 20px; /* Adjusted padding */
+    border: none; /* Clean, no borders */
+    background-color: transparent;
+    color: #E0E0E0; /* Light gray text for contrast on dark sidebar */
+    font-size: 14px; /* Slightly smaller than original for modern feel */
+    /* font-weight: bold; */ /* Can be too much for sidebar items, let's try normal */
+    border-radius: 3px; /* Subtle rounding on hover/selection */
+    margin: 2px 5px; /* Give buttons some breathing room */
+}
+
+QWidget#leftSidebar QPushButton:hover {
+    background-color: #5C85D6; /* Light blue accent */
+    color: white;
+}
+
+QWidget#leftSidebar QPushButton[cssClass="activeView"] {
+    background-color: #3875D7; /* Slightly darker blue for active */
+    color: white;
+    font-weight: bold;
+}
+
+/* --- Progress Bar Styling --- */
+QProgressBar {
+    border: 1px solid #A0A0A0;
+    border-radius: 8px; 
+    text-align: center;
+    padding: 1px; /* Prevents text touching border */
+    background-color: #E8E8E8; /* Light track background */
+    font-size: 11px;
+    color: #333333;
+}
+
+QProgressBar::chunk {
+    background-color: #5C85D6; /* Use accent blue for progress */
+    border-radius: 7px; /* Slightly less than parent for inset look */
+    margin: 1px; /* Creates a small border around the chunk */
+}
+
+/* --- Specific Control Refinements --- */
+/* Sliders */
+QSlider::groove:horizontal {
+    border: 1px solid #999999;
+    height: 6px; 
+    background: #D4D4D4;
+    margin: 2px 0;
+    border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+    background: qradialgradient(cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, 
+                                stop:0 #FFFFFF, stop:1 #C0C0C0); /* Metallic sheen */
+    border: 1px solid #76797C;
+    width: 14px; 
+    height: 14px;
+    margin: -4px 0; 
+    border-radius: 7px;
+}
+
+/* Search Field (conceptual - apply with setProperty or setObjectName) */
+QLineEdit[cssClass="searchField"] {
+    border-radius: 12px; /* More rounded for search */
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 12px;
+}
+
+/* Styling for the navigation bar (month/year selector) in ALL QCalendarWidgets */
+QCalendarWidget QWidget#qt_calendar_navigationbar {
+    background-color: #E8E8E8; /* Lighter gray */
+    color: #333333; /* Dark text for month/year */
+}
+
+QCalendarWidget QToolButton { /* Navigation arrows */
+    color: #333333; /* Dark text/icons */
+    background-color: transparent;
+    border: none;
+    padding: 2px;
+    margin: 2px;
+}
+
+QCalendarWidget QToolButton:hover {
+    background-color: #D0D0D0;
+}
+
+QCalendarWidget QToolButton:pressed {
+    background-color: #B0B0B0;
+}
+
+/* For the month/year labels/buttons specifically if they are separate elements */
+QCalendarWidget QMenu#qt_calendar_monthbutton,
+QCalendarWidget QSpinBox#qt_calendar_yearbutton,
+QCalendarWidget QLabel#qt_calendar_monthlabel, /* For some styles */
+QCalendarWidget QLabel#qt_calendar_yearlabel { /* For some styles */
+    color: #333333; 
+    background-color: transparent; /* Or match #E8E8E8 */
+} 
