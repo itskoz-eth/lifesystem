@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String, Text, ForeignKey, Date, Enum
+from sqlalchemy import Column, Integer, String, Text, ForeignKey, Date, Enum as SAEnum
 from sqlalchemy.orm import relationship
-from . import Base, TimestampMixin # Adjusted import to reflect new structure
+from .base import Base
+from .timestamp_mixin import TimestampMixin
 import enum
 
 class ActionStatus(enum.Enum):
@@ -16,7 +17,7 @@ class Action(Base, TimestampMixin):
     name = Column(String(100), nullable=False)
     description = Column(Text)
     due_date = Column(Date)
-    status = Column(Enum(ActionStatus), default=ActionStatus.NOT_STARTED)
+    status = Column(SAEnum(ActionStatus), default=ActionStatus.NOT_STARTED)
     goal_id = Column(Integer, ForeignKey('goals.id'))
     
     # Relationships

@@ -55,6 +55,7 @@ class Goal(Base):
     supporting_habits = relationship("Habit", secondary="goal_habits", back_populates="supporting_goals", overlaps="goal, habit")
     values = relationship("Value", secondary=goal_value, back_populates="goals")
     reflections = relationship("GoalReflection", back_populates="goal", cascade="all, delete-orphan")
+    actions = relationship("Action", back_populates="goal", cascade="all, delete-orphan")
 
 class GoalCheckIn(Base):
     __tablename__ = 'goal_check_ins'

@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 # Import Base and engine from the app.database module
 # Base will be used by the engine to create tables
@@ -18,6 +19,22 @@ app = FastAPI(
     title="Life System API",
     description="API for managing goals, habits, values, and reflections.",
     version="0.1.0"
+)
+
+# CORS Middleware Configuration
+origins = [
+    "http://localhost:5173", # Origin of the React frontend development server
+    "http://localhost:5174", # Just in case Vite uses the next port
+    "http://localhost:3000", # Common React dev port, just in case
+    "http://localhost",      # For some local setups
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"], # Allow all methods (GET, POST, PUT, DELETE, etc.)
+    allow_headers=["*"], # Allow all headers
 )
 
 @app.get("/")
